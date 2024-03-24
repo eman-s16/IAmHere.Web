@@ -1,0 +1,241 @@
+﻿@{
+    ViewData["Title"] = "Add Person";
+    Layout = "_Layout";
+}
+@section CSS {
+    <link rel="stylesheet" href="~/css/style.css">
+}
+
+<div class="wrapper">
+
+    <form action="">
+        <div id="wizard">
+            <!-- SECTION 1 -->
+            <h4></h4>
+            <section class="p-0">
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label for="firstName" class="form-label">الاسم الأول</label>
+                        <input type="text" class="form-control" id="firstName" name="FirstName" placeholder="الاسم الأول" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="lastName" class="form-label">الاسم الأخير</label>
+                        <input type="text" class="form-control" id="lastName" name="LastName" placeholder="الاسم الأخير" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="age" class="form-label">العمر</label>
+                        <input type="number" class="form-control" id="age" name="Age" placeholder="العمر">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="gender" class="form-label">الجنس</label>
+                        <select class="form-select" id="gender" name="Gender" required>
+                            <option value="ذكر">ذكر</option>
+                            <option value="أنثى">أنثى</option>
+                        </select>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 2 -->
+            <h4></h4>
+            <section>
+
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label for="lastSeenDate" class="form-label">تاريخ الرؤية الأخيرة</label>
+                        <input type="text" class="form-control" id="lastSeenDate" name="LastSeenDate" placeholder="تاريخ الرؤية الأخيرة (YYYY-MM-DD)">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="location" class="form-label">موقع الرؤية الأخيرة</label>
+                        <input type="text" class="form-control" id="location" name="Location" placeholder="موقع الرؤية الأخيرة">
+                    </div>
+                    <div class="col-md-12">
+                        <label for="description" class="form-label">الوصف</label>
+                        <textarea class="form-control" id="description" name="Description" placeholder="الوصف"></textarea>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 3 -->
+            <h4></h4>
+            <section>
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label for="caseDetails" class="form-label">تفاصيل الحالة</label>
+                        <textarea class="form-control" id="caseDetails" name="CaseDetails" placeholder="تفاصيل الحالة"></textarea>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="clothingDescription" class="form-label">وصف الملابس</label>
+                        <input type="text" class="form-control" id="clothingDescription" name="ClothingDescription" placeholder="وصف الملابس">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="heightCM" class="form-label">الطول (سم)</label>
+                        <input type="number" class="form-control" id="heightCM" name="HeightCM" placeholder="الطول (سم)">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="weightKG" class="form-label">الوزن (كجم)</label>
+                        <input type="number" class="form-control" id="weightKG" name="WeightKG" placeholder="الوزن (كجم)">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="hairColor" class="form-label">لون الشعر</label>
+                        <input type="text" class="form-control" id="hairColor" name="HairColor" placeholder="لون الشعر">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="eyeColor" class="form-label">لون العيون</label>
+                        <input type="text" class="form-control" id="eyeColor" name="EyeColor" placeholder="لون العيون">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="photoPath" class="form-label">مسار الصورة</label>
+                        <input type="text" class="form-control" id="photoPath" name="PhotoPath" placeholder="مسار الصورة">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="contact" class="form-label">رقم الاتصال</label>
+                        <input type="text" class="form-control" id="contact" name="Contact" placeholder="رقم الاتصال">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="caseStatus" class="form-label">حالة القضية</label>
+                        <select class="form-select" id="caseStatus" name="CaseStatus" required>
+                            <option value="مفقود">مفقود</option>
+                            <option value="تم العثور عليه">تم العثور عليه</option>
+                            <option value="متوفى">متوفى</option>
+                        </select>
+                    </div>
+                </div>
+
+            </section>
+
+
+        </div>
+    </form>
+</div>
+
+@* <div class="container">
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-8">
+            <form id="searchForm" action="submit_form.php" method="post">
+                <div id="wizard">
+                    <div class="wizard-inner">
+                        <div class="connecting-line"></div>
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li role="presentation" class="nav-item">
+                                <a href="#step1" data-toggle="tab" class="nav-link active" role="tab">المعلومات الأساسية</a>
+                            </li>
+                            <li role="presentation" class="nav-item">
+                                <a href="#step2" data-toggle="tab" class="nav-link" role="tab">المعلومات الإضافية</a>
+                            </li>
+                            <li role="presentation" class="nav-item">
+                                <a href="#step3" data-toggle="tab" class="nav-link" role="tab">التفاصيل الشخصية</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="tab-content">
+                        <div class="tab-pane active" role="tabpanel" id="step1">
+                            <!-- Step 1 content -->
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label for="firstName" class="form-label">الاسم الأول</label>
+                                    <input type="text" class="form-control" id="firstName" name="FirstName" placeholder="الاسم الأول" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="lastName" class="form-label">الاسم الأخير</label>
+                                    <input type="text" class="form-control" id="lastName" name="LastName" placeholder="الاسم الأخير" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="age" class="form-label">العمر</label>
+                                    <input type="number" class="form-control" id="age" name="Age" placeholder="العمر">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="gender" class="form-label">الجنس</label>
+                                    <select class="form-select" id="gender" name="Gender" required>
+                                        <option value="ذكر">ذكر</option>
+                                        <option value="أنثى">أنثى</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane" role="tabpanel" id="step2">
+                            <!-- Step 2 content -->
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label for="lastSeenDate" class="form-label">تاريخ الرؤية الأخيرة</label>
+                                    <input type="text" class="form-control" id="lastSeenDate" name="LastSeenDate" placeholder="تاريخ الرؤية الأخيرة (YYYY-MM-DD)">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="location" class="form-label">موقع الرؤية الأخيرة</label>
+                                    <input type="text" class="form-control" id="location" name="Location" placeholder="موقع الرؤية الأخيرة">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="description" class="form-label">الوصف</label>
+                                    <textarea class="form-control" id="description" name="Description" placeholder="الوصف"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane" role="tabpanel" id="step3">
+                            <!-- Step 3 content -->
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label for="caseDetails" class="form-label">تفاصيل الحالة</label>
+                                    <textarea class="form-control" id="caseDetails" name="CaseDetails" placeholder="تفاصيل الحالة"></textarea>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="clothingDescription" class="form-label">وصف الملابس</label>
+                                    <input type="text" class="form-control" id="clothingDescription" name="ClothingDescription" placeholder="وصف الملابس">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="heightCM" class="form-label">الطول (سم)</label>
+                                    <input type="number" class="form-control" id="heightCM" name="HeightCM" placeholder="الطول (سم)">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="weightKG" class="form-label">الوزن (كجم)</label>
+                                    <input type="number" class="form-control" id="weightKG" name="WeightKG" placeholder="الوزن (كجم)">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="hairColor" class="form-label">لون الشعر</label>
+                                    <input type="text" class="form-control" id="hairColor" name="HairColor" placeholder="لون الشعر">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="eyeColor" class="form-label">لون العيون</label>
+                                    <input type="text" class="form-control" id="eyeColor" name="EyeColor" placeholder="لون العيون">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="photoPath" class="form-label">مسار الصورة</label>
+                                    <input type="text" class="form-control" id="photoPath" name="PhotoPath" placeholder="مسار الصورة">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="contact" class="form-label">رقم الاتصال</label>
+                                    <input type="text" class="form-control" id="contact" name="Contact" placeholder="رقم الاتصال">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="caseStatus" class="form-label">حالة القضية</label>
+                                    <select class="form-select" id="caseStatus" name="CaseStatus" required>
+                                        <option value="مفقود">مفقود</option>
+                                        <option value="تم العثور عليه">تم العثور عليه</option>
+                                        <option value="متوفى">متوفى</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="d-grid mt-3">
+                    <button type="submit" class="btn btn-primary">البحث</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div> *@
+
+
+
+
+@section Scripts {
+
+    <script src="~/js/jquery-3.3.1.min.js"></script>
+
+    <!-- JQUERY STEP -->
+    <script src="~/js/jquery.steps.js"></script>
+
+    <script src="~/js/main.js"></script>
+}
+
