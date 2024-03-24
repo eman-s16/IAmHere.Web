@@ -113,7 +113,7 @@ namespace IAmHere.Web.Services
                 Contact = "7890123456",
                 CaseStatus = "مفقود"
             };
-            var Person6 = new PersonModel
+            var person6 = new PersonModel
             {
                 Id = 6,
                 FirstName = "John",
@@ -140,7 +140,8 @@ namespace IAmHere.Web.Services
                 person2,
                 person3,
                 person4,
-                person5
+                person5,
+                person6
             };
 
            
