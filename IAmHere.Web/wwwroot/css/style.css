@@ -200,7 +200,7 @@ textarea.form-control {
         content: '\f2ea';
         position: absolute;
         top: 15px;
-        left: 40px;
+        left: 35px;
         font-family: Material-Design-Iconic-Font;
         -webkit-transform: translateZ(0);
         transform: translateZ(0);
@@ -220,6 +220,7 @@ textarea.form-control {
   display: none; }
 .actions li:first-child a {
     background: #e6e6e6;
+ 
     display: flex;
     justify-content: center;
 }

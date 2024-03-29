@@ -1,25 +1,25 @@
-﻿using IAmHere.Web.Models.Person;
+﻿using IAmHere.Web.Models.Doner;
 using IAmHere.Web.Repository;
 using Microsoft.AspNetCore.Mvc;
 
 namespace IAmHere.Web.Controllers
 {
-    public class PersonController : Controller
+    public class DonerController : Controller
     {
-        private readonly IPersonRepository _personRepo;
-        private readonly ILogger<HomeController> _logger;
+        private readonly IDonerRepository _DonerRepo;
+        private readonly ILogger<DonerController> _logger;
 
-        public PersonController(ILogger<HomeController> logger, IPersonRepository personRepo)
+        public DonerController(ILogger<DonerController> logger, IDonerRepository doner)
         {
             _logger = logger;
-            _personRepo = personRepo;
+            _DonerRepo = doner;
         }
 
-       
-        public IActionResult SearchPersons(int page = 1, string searchString = "")
+
+        public IActionResult SearchDoners(int page = 1, string searchString = "")
         {
             int pageSize = 9;
-            List<PersonModel> list = _personRepo.GetAll();
+            List<DonerModel> list = _DonerRepo.GetAll();
 
             // Filter by name if a search string is provided
             if (!string.IsNullOrEmpty(searchString))
@@ -37,29 +37,29 @@ namespace IAmHere.Web.Controllers
             return View(paginatedList);
 
         }
-        public IActionResult AddPerson()
+        public IActionResult AddDoner()
         {
             return View();
         }
         [HttpPost]
 
-        public async Task<IActionResult> AddPerson(PersonModel personModel)
+        public async Task<IActionResult> AddDoner(DonerModel DonerModel)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
-                    // Attempt to add the person
-                    var response = await _personRepo.Add(personModel);
+                    // Attempt to add the Doner
+                    var response = await _DonerRepo.Add(DonerModel);
 
                     if (response.Success)
                     {
-                        // If person is added successfully, return a success message
-                        return Json(new { success = true, message = "Person added successfully" });
+                        // If Doner is added successfully, return a success message
+                        return Json(new { success = true, message = "Doner added successfully" });
                     }
                     else
                     {
-                        // If there's an error adding the person, return an error message
+                        // If there's an error adding the Doner, return an error message
                         return Json(new { success = false, message = response.Message });
                     }
                 }
@@ -72,11 +72,9 @@ namespace IAmHere.Web.Controllers
             else
             {
                 // If model state is not valid, return an error message
-                return Json(new { success = false, message = "Invalid form data." });
+                return View();
             }
         }
-
-
 
     }
 }

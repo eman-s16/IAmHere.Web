@@ -2,7 +2,7 @@
 <html lang="ar" dir="rtl">
 
   <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -26,6 +26,8 @@
     <link rel="stylesheet" href="~/fonts/material-design-iconic-font/css/material-design-iconic-font.css">
 
 
+
+
     <!-- ===============================================-->
     <!--    Stylesheets-->
     <!-- ===============================================-->
@@ -38,6 +40,8 @@
     <link href="~/assets/css/theme-rtl.css" rel="stylesheet" />
     @await RenderSectionAsync("CSS", required: false)
     <link href="~/css/site.css" rel="stylesheet" />
+    <script src="~/js/jquery-3.3.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   </head>
 
 
@@ -55,7 +59,7 @@
             <ul class="navbar-nav ms-auto pt-2 pt-lg-0 font-base">
               <li class="nav-item px-2"><a class="nav-link" aria-current="page" href="@Url.Action("Index","Home")">الصفحة الرئيسية</a></li>
                         <li class="nav-item px-2"><a class="nav-link" href="@Url.Action("SearchPersons","Person")">ابحث عن شخص</a></li>
-                        <li class="nav-item px-2"><a class="nav-link" href="@Url.Action("SearchBlood","blood")">ابحث عن دم</a></li>
+                        <li class="nav-item px-2"><a class="nav-link" href="@Url.Action("SearchDoners","Doner")">ابحث عن دم</a></li>
             </ul>
             <div>
              

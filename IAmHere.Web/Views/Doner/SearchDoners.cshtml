@@ -1,33 +1,36 @@
-﻿@model List<IAmHere.Web.Models.Person.PersonModel>
+﻿@model List<IAmHere.Web.Models.Doner.DonerModel>
 @{
-    ViewData["Title"] = "Search Persons";
-	Layout = "_Layout";
+    ViewData["Title"] = "Search Doners";
+    Layout = "_Layout";
 }
 
 <section class="py-7">
 
     <div class="container-fluid">
-     
+
         <div class="carousel slide pt-6" id="carouselExampleDark" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div>
                     <div class="d-flex justify-content-between align-items-center">
-                      
-                           
-                        <form method="get" action="@Url.Action("SearchPersons", "Person")">
+
+                        @*  <div class="d-flex align-items-center position-relative my-3">
+                        <i class="bi bi-search fs-1 position-absolute ms-2"></i>
+                        <input type="text" id="searchInput" class="form-control form-control-solid w-250px ps-4" placeholder="ابحث..." />
+                        </div> *@
+                        <form method="get" action="@Url.Action("SearchDoners", "Doner")">
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control" name="searchString" placeholder="Filter by name" value="@ViewBag.SearchString" />
-                                <button class="btn btn-primary" type="submit">Search</button>
+                                <input type="text" class="form-control" name="searchString" placeholder="ابحث عن الاسم..." value="@ViewBag.SearchString" />
+                                <button class="btn btn-primary" type="submit">ابحث</button>
                             </div>
 
                         </form>
 
-                        <a href="@Url.Action("AddPerson", "Person")" class="btn btn-primary">اضف مفقود</a>
+                        <a href="@Url.Action("AddDoner", "Doner")" class="btn btn-primary">اضف شخص محتاج لدم</a>
 
-                     
+
                     </div>
                     <div class="row h-100">
-                        
+
                         @foreach (var item in Model)
                         {
                             <!-- بطاقة لكل شخص -->
@@ -38,7 +41,7 @@
                                             <!-- رمز الشخص قبل الاسم -->
                                             <h5 class="mb-0 text-primary"><i class="fas fa-user"></i> الاسم: <span class="text-black-50">@item.FirstName @item.LastName</span></h5>
                                             <!-- شارة لحالة الحالة -->
-                                            <div class="badge rounded-pill text-bg-primary">@item.CaseStatus</div>
+                                            <div class="badge rounded-pill text-bg-primary">@item.BloodType</div>
                                         </div>
                                         <p class="card-text pt-3"></p>
                                         <!-- جدول للعمر والبلد والجنس -->
@@ -46,12 +49,9 @@
                                             <tbody>
                                                 <tr>
                                                     <th scope="row">العمر:</th>
-                                                    <td>@item.Age</td>
+                                                    <td>@item.DateOfBirth</td>
                                                 </tr>
-                                                <tr>
-                                                    <th scope="row">الدولة:</th>
-                                                    <td>@item.Location</td>
-                                                </tr>
+                                               
                                                 <tr>
                                                     <th scope="row">الجنس:</th>
                                                     <td>@item.Gender</td>
@@ -59,7 +59,7 @@
                                             </tbody>
                                         </table>
                                         <!-- زر لعرض مربع حوار المعلومات الإضافية -->
-                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#extraInfoModal_@item.Id">
+                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#extraInfoModal_@item.DonorID">
                                             عرض المعلومات الإضافية
                                         </button>
                                     </div>
@@ -67,7 +67,7 @@
                             </div>
 
                             <!-- مربع حوار للمعلومات الإضافية -->
-                            <div class="modal fade" id="extraInfoModal_@item.Id" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal fade" id="extraInfoModal_@item.DonorID" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -84,7 +84,7 @@
                                                     </tr>
                                                     <tr>
                                                         <th scope="row">العمر</th>
-                                                        <td>@item.Age</td>
+                                                        <td>@item.DateOfBirth</td>
                                                     </tr>
                                                     <tr>
                                                         <th scope="row">الجنس</th>
@@ -92,48 +92,14 @@
                                                     </tr>
                                                     <tr>
                                                         <th scope="row">تاريخ آخر ظهور</th>
-                                                        <td>@item.LastSeenDate</td>
+                                                        <td>@item.LastDonationDate</td>
                                                     </tr>
-                                                    <tr>
-                                                        <th scope="row">الموقع</th>
-                                                        <td>@item.Location</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row">الوصف</th>
-                                                        <td>@item.Description</td>
-                                                    </tr>
+                                                   
                                                     <tr>
                                                         <th scope="row">تفاصيل الحالة</th>
-                                                        <td>@item.CaseDetails</td>
+                                                        <td>@item.LastDonationDate</td>
                                                     </tr>
-                                                    <tr>
-                                                        <th scope="row">وصف الملابس</th>
-                                                        <td>@item.ClothingDescription</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row">الطول (سم)</th>
-                                                        <td>@item.HeightCM</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row">الوزن (كغ)</th>
-                                                        <td>@item.WeightKG</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row">لون الشعر</th>
-                                                        <td>@item.HairColor</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row">لون العين</th>
-                                                        <td>@item.EyeColor</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row">الاتصال</th>
-                                                        <td>@item.Contact</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row">حالة الحالة</th>
-                                                        <td>@item.CaseStatus</td>
-                                                    </tr>
+                                                   
                                                 </tbody>
                                             </table>
                                         </div>
@@ -167,10 +133,10 @@
                         </nav>
 
                     </div>
-                    
+
                 </div>
             </div>
-            
+
         </div>
     </div>
     <!-- end of .container-->
@@ -179,5 +145,5 @@
 
 
 @section scripts {
-    
+
 }

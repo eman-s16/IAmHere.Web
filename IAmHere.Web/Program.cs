@@ -1,10 +1,13 @@
-using IAmHere.Web.Services;
+using IAmHere.Web.Repository;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddScoped<IPersonService, PersonService>();
+
+builder.Services.AddScoped<IPersonRepository, PersonRepository>();
+builder.Services.AddScoped<IDonerRepository, DonerRepository>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
